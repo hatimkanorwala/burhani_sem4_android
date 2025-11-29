@@ -44,6 +44,18 @@ public class MainActivity extends AppCompatActivity {
 
         sharedPreferences = getSharedPreferences(myPreference, Context.MODE_PRIVATE);
 
+        if(sharedPreferences.getAll().containsKey("isLogin")){
+            if(sharedPreferences.getString("isLogin","").equals("1")){
+                if(sharedPreferences.getAll().containsKey("username")){
+                    if(sharedPreferences.getString("username","") != ""){
+                        Intent i = new Intent(MainActivity.this,home.class);
+                        startActivity(i);
+                        finish();
+                    }
+                }
+            }
+        }
+
         _main_tv_newUser.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

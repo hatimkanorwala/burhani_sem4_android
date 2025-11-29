@@ -1,14 +1,10 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
     <style name="Base.Theme.Burhani_sem4" parent="Theme.AppCompat.Light.DarkActionBar">
-        <!-- Customize your light theme here. -->
-        <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
         <item name="colorPrimary">@android:color/holo_green_dark</item>
     </style>
 
     <style name="Theme.Burhani_sem4" parent="Base.Theme.Burhani_sem4" />
-
-
     <style name="fullScreen" parent="Theme.AppCompat.NoActionBar">
         <item name="android:windowFullscreen">true</item>
         <item name="android:background">@android:color/white</item>

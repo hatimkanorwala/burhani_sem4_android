@@ -13,7 +13,7 @@
         android:theme="@style/Theme.Burhani_sem4">
         <activity
             android:name=".home"
-            android:exported="false" />
+            android:exported="true" />
         <activity
             android:name=".Registration"
             android:exported="true"
