@@ -79,6 +79,8 @@ public class home extends AppCompatActivity {
         }
         else if(itemid == R.id.menu_aboutUs){
             Toast.makeText(this, "About Us Menu Clicked", Toast.LENGTH_SHORT).show();
+            Intent i = new Intent(home.this, aboutus.class);
+            startActivity(i);
         }
         else if(itemid == R.id.menu_contactUs){
             Toast.makeText(this, "Contact Us Menu Clicked", Toast.LENGTH_SHORT).show();
