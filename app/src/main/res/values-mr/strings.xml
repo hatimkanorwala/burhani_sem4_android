@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">burhani_sem4</string>
+    <string name="enterUsername">आपले नाव प्रविष्ट करा</string>
+    <string name="enterPassword">पासवर्ड टाका</string>
+    <string name="enterEmail">ईमेल प्रविष्ट करा</string>
+    <string name="enterContact">संपर्क क्रमांक प्रविष्ट करा</string>
+    <string name="tnc">मी अटी आणि शर्तींशी सहमत आहे.</string>
+    <string name="forgotPassword">पासवर्ड विसरलात?</string>
+    <string name="languageSelection">कृपया भाषा निवडा</string>
+    <string name="logout">लॉगआउट</string>
+
+    <array name="status_array">
+        <item>सक्रिय</item>
+        <item>निष्क्रिय</item>
+    </array>
+</resources>

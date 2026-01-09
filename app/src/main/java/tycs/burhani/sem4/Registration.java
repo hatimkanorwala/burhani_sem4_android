@@ -3,6 +3,9 @@ package tycs.burhani.sem4;
 import static android.view.View.INVISIBLE;
 import static android.view.View.VISIBLE;
 
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.content.res.Configuration;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
@@ -24,6 +27,8 @@ import androidx.core.view.WindowInsetsCompat;
 
 import com.google.android.material.textfield.TextInputLayout;
 
+import java.util.Locale;
+
 public class Registration extends AppCompatActivity {
     EditText _registration_et_username,_registration_et_password,_registration_et_email,_registration_et_contact;
     TextInputLayout _registration_etl_username,_registration_etl_password,_registration_etl_email,_registration_etl_contact;
@@ -34,7 +39,20 @@ public class Registration extends AppCompatActivity {
     Button _registration_btn_submit;
     TextView _registration_tv_data;
     String username,password,email,contact,data;
+    SharedPreferences sharedPreferences;
+    public static final String myPrefs = "myPrefs";
 
+    protected void attachBaseContext(Context base) {
+        // Load saved language and apply locale before super.attachBaseContext
+        SharedPreferences prefs = base.getSharedPreferences(myPrefs, Context.MODE_PRIVATE);
+        String lang = prefs.getString("language", "en");  // Default to "en" if not set
+        Locale locale = new Locale(lang);
+        Locale.setDefault(locale);
+
+        Configuration config = new Configuration(base.getResources().getConfiguration());
+        config.setLocale(locale);
+        super.attachBaseContext(base.createConfigurationContext(config));
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,6 +79,16 @@ public class Registration extends AppCompatActivity {
         _registration_etl_password = findViewById(R.id.registration_etl_password);
         _registration_etl_email = findViewById(R.id.registration_etl_email);
         _registration_etl_contact = findViewById(R.id.registration_etl_contact);
+
+        sharedPreferences = getSharedPreferences(myPrefs, Context.MODE_PRIVATE);
+//        if(sharedPreferences.getAll().containsKey("language")){
+//            if(sharedPreferences.getString("language", "") != ""){
+//                setLocale(sharedPreferences.getString("language", ""));
+//            }
+//            else{
+//                setLocale("en");
+//            }
+//        }
 
 
         _registration_btn_submit.setEnabled(false);
@@ -170,5 +198,12 @@ public class Registration extends AppCompatActivity {
         _registration_tv_data.setTextColor(getResources().getColor(R.color.black));
         _registration_tv_data.setTextSize(16);
         _registration_tv_data.setVisibility(VISIBLE);
+    }
+    private void setLocale(String code) {
+        Locale locale = new Locale(code);
+        Locale.setDefault(locale);
+        Configuration config = new Configuration();
+        config.locale = locale;
+        getBaseContext().getResources().updateConfiguration(config, getBaseContext().getResources().getDisplayMetrics());
     }
 }

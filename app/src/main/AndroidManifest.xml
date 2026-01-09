@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
+
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
@@ -13,9 +14,20 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Burhani_sem4">
         <activity
-            android:name=".aboutus"
-            android:label="Burhani College"
+            android:name=".SplashScreen"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".Settings"
             android:exported="true" />
+        <activity
+            android:name=".aboutus"
+            android:exported="true"
+            android:label="Burhani College" />
         <activity
             android:name=".home"
             android:exported="true" />
@@ -28,11 +40,6 @@
             android:exported="true"
             android:label="Login"
             android:theme="@style/fullScreen">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
     </application>
 

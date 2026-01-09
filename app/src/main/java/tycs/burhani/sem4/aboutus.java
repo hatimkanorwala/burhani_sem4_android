@@ -1,11 +1,14 @@
 package tycs.burhani.sem4;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatDelegate;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
@@ -13,8 +16,18 @@ import androidx.core.view.WindowInsetsCompat;
 public class aboutus extends AppCompatActivity {
     WebView webView;
     private static String url = "https://www.burhanicollege.edu.in/";
+    public static final String myPrefs = "myPrefs";
+    SharedPreferences preferences;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        preferences = getSharedPreferences(myPrefs, Context.MODE_PRIVATE);
+        boolean isDarkMode = preferences.getBoolean("darkMode", false);
+        if(isDarkMode){
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
+        }
+        else{
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
+        }
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_aboutus);

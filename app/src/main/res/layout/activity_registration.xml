@@ -17,7 +17,7 @@
             android:id="@+id/registration_et_username"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Enter Username"
+            android:hint="@string/enterUsername"
             android:inputType="text"
             />
     </com.google.android.material.textfield.TextInputLayout>
@@ -33,7 +33,7 @@
             android:id="@+id/registration_et_password"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Enter Password"
+            android:hint="@string/enterPassword"
             android:inputType="textPassword"
             />
     </com.google.android.material.textfield.TextInputLayout>
@@ -48,7 +48,7 @@
             android:id="@+id/registration_et_email"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Enter Email"
+            android:hint="@string/enterEmail"
             android:inputType="textEmailAddress"
             />
     </com.google.android.material.textfield.TextInputLayout>
@@ -65,7 +65,7 @@
             android:id="@+id/registration_et_contact"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Enter Contact"
+            android:hint="@string/enterContact"
             android:maxLength="10"
             android:inputType="number"
             />
@@ -103,7 +103,7 @@
         android:id="@+id/registration_checkbox_tnc"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="I agree to the terms and conditions"
+        android:text="@string/tnc"
         android:layout_below="@id/registration_spinner_status"
         android:layout_margin="10dp"
         />
