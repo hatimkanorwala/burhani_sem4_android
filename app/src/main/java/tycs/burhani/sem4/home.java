@@ -1,10 +1,12 @@
 package tycs.burhani.sem4;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -13,19 +15,33 @@ import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.AppCompatDelegate;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
+import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.android.material.textfield.TextInputEditText;
+import com.google.android.material.textfield.TextInputLayout;
+
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Locale;
+
+import tycs.burhani.sem4.model.Person;
 
 public class home extends AppCompatActivity {
     SharedPreferences preferences;
     public static final String myPrefs = "myPrefs";
     Button _home_btn_logout;
     String username;
+
+    RecyclerView _home_recyclerView;
+    Button _home_btn_add;
+    public int id = 0;
+    List<Person> personList;
 
     protected void attachBaseContext(Context base) {
         // Load saved language and apply locale before super.attachBaseContext
@@ -57,6 +73,37 @@ public class home extends AppCompatActivity {
             AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
         }
         _home_btn_logout = findViewById(R.id.home_btn_logout);
+        _home_recyclerView = findViewById(R.id.home_recyclerView);
+        _home_btn_add = findViewById(R.id.home_btn_add);
+        personList = new ArrayList<>();
+        _home_btn_add.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                AlertDialog.Builder dialog = new AlertDialog.Builder(home.this);
+                View dialogView = LayoutInflater.from(home.this).inflate(R.layout.user_add_edit,null);
+                dialog.setView(dialogView);
+                dialog.setTitle("Add New User");
+                TextInputLayout _id, _firstName, _lastName, _address;
+                TextInputEditText _et_id, _et_firstName, _et_lastName, _et_address;
+                _id = dialogView.findViewById(R.id.person_etl_id);
+                _firstName = dialogView.findViewById(R.id.person_etl_firstName);
+                _lastName = dialogView.findViewById(R.id.person_etl_lastName);
+                _address = dialogView.findViewById(R.id.person_etl_address);
+                _et_id = dialogView.findViewById(R.id.person_et_id);
+                _et_firstName = dialogView.findViewById(R.id.person_et_firstName);
+                _et_lastName = dialogView.findViewById(R.id.person_et_lastName);
+                _et_address = dialogView.findViewById(R.id.person_et_address);
+                _id.setVisibility(View.GONE);
+                dialog.setPositiveButton("Save", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+
+                    }
+                });
+                dialog.setNegativeButton("Cancel",null);
+                dialog.show();
+            }
+        });
 
         if (preferences.getAll().containsKey("isLogin")) {
             if (preferences.getString("isLogin", "").equals("1")) {
