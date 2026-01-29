@@ -21,6 +21,7 @@ import androidx.appcompat.app.AppCompatDelegate;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.material.textfield.TextInputEditText;
@@ -30,6 +31,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 
+import tycs.burhani.sem4.Adapter.PersonAdapter;
 import tycs.burhani.sem4.model.Person;
 
 public class home extends AppCompatActivity {
@@ -42,6 +44,7 @@ public class home extends AppCompatActivity {
     Button _home_btn_add;
     public int id = 0;
     List<Person> personList;
+    PersonAdapter adapter;
 
     protected void attachBaseContext(Context base) {
         // Load saved language and apply locale before super.attachBaseContext
@@ -76,9 +79,14 @@ public class home extends AppCompatActivity {
         _home_recyclerView = findViewById(R.id.home_recyclerView);
         _home_btn_add = findViewById(R.id.home_btn_add);
         personList = new ArrayList<>();
+        LinearLayoutManager  layoutManager = new LinearLayoutManager(home.this,LinearLayoutManager.VERTICAL,false);
+        _home_recyclerView.setHasFixedSize(true);
+        _home_recyclerView.setLayoutManager(layoutManager);
+       // _home_recyclerView.setAdapter(adapter);
         _home_btn_add.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                id++;
                 AlertDialog.Builder dialog = new AlertDialog.Builder(home.this);
                 View dialogView = LayoutInflater.from(home.this).inflate(R.layout.user_add_edit,null);
                 dialog.setView(dialogView);
@@ -97,7 +105,22 @@ public class home extends AppCompatActivity {
                 dialog.setPositiveButton("Save", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
-
+                        String fname = _et_firstName.getText().toString().trim();
+                        String lname = _et_lastName.getText().toString().trim();
+                        String address = _et_address.getText().toString().trim();
+                        personList.add(new Person(
+                                id,
+                                fname,
+                                lname,
+                                address
+                        ));
+                        PersonAdapter newPerson = new PersonAdapter(personList,getApplicationContext(),null);
+                        _home_recyclerView.setAdapter(newPerson);
+                        newPerson.notifyDataSetChanged();
+                        if(newPerson.getItemCount() > 0){
+                            Toast.makeText(home.this, "Count: " + newPerson.getItemCount(), Toast.LENGTH_SHORT).show();
+                        }
+                        Toast.makeText(home.this, "Data Inserted Successfully", Toast.LENGTH_SHORT).show();
                     }
                 });
                 dialog.setNegativeButton("Cancel",null);

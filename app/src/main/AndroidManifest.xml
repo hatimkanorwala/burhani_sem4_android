@@ -14,10 +14,14 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Burhani_sem4">
         <activity
+            android:name=".MainFragment"
+            android:exported="false" />
+        <activity
             android:name=".SplashScreen"
-            android:exported="true" >
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
@@ -36,12 +40,15 @@
             android:exported="true"
             android:label="Registration" />
         <activity
+            android:name=".sampe"
+            android:exported="true"
+            android:label="Sample" />
+        <activity
             android:name=".MainActivity"
             android:exported="true"
             android:label="Login"
             android:screenOrientation="portrait"
-            android:theme="@style/fullScreen">
-        </activity>
+            android:theme="@style/fullScreen"></activity>
     </application>
 
 </manifest>
