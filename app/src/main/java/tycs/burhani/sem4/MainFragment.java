@@ -1,6 +1,7 @@
 package tycs.burhani.sem4;
 
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 import android.widget.FrameLayout;
 
@@ -9,6 +10,12 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
+
+import tycs.burhani.sem4.Fragment.FirstFragment;
+import tycs.burhani.sem4.Fragment.SecondFragment;
+import tycs.burhani.sem4.Fragment.ThirdFragment;
 
 public class MainFragment extends AppCompatActivity {
     FrameLayout frameLayout;
@@ -28,6 +35,42 @@ public class MainFragment extends AppCompatActivity {
         btn1 = findViewById(R.id.fragment_btn1);
         btn2 = findViewById(R.id.fragment_btn2);
         btn3 = findViewById(R.id.fragment_btn3);
-
+        btn1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                displayFragment("First");
+            }
+        });
+        btn2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                displayFragment("Second");
+            }
+        });
+        btn3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                displayFragment("Third");
+            }
+        });
+    }
+    public void displayFragment(String value){
+        Fragment fragment = null;
+        switch (value){
+            case "First":
+                fragment = new FirstFragment();
+                break;
+            case "Second":
+                fragment = new SecondFragment();
+                break;
+            case "Third":
+                fragment = new ThirdFragment();
+                break;
+        }
+        if(fragment != null){
+            FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+            ft.replace(R.id.frameLayout,fragment);
+            ft.commit();
+        }
     }
 }

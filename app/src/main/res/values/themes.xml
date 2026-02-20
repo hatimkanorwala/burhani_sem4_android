@@ -6,8 +6,9 @@
     </style>
 
     <style name="Theme.Burhani_sem4" parent="Base.Theme.Burhani_sem4" />
+
     <style name="fullScreen" parent="Theme.Design.Light.NoActionBar">
-<!--        <item name="android:windowFullscreen">true</item>-->
+        <!--        <item name="android:windowFullscreen">true</item>-->
         <item name="android:windowBackground">@android:color/white</item>
         <item name="android:textColor">@android:color/black</item>
         <item name="android:statusBarColor">@android:color/holo_red_dark</item>

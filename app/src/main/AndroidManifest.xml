@@ -14,6 +14,21 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Burhani_sem4">
         <activity
+            android:name=".newDashboard"
+            android:exported="true"
+            android:label="New Dashboard"
+            />
+        <activity
+            android:name=".newLogin"
+            android:exported="true"
+            android:label="New Login"
+             />
+        <activity
+            android:name=".NewRegistration"
+            android:exported="true"
+            android:label="New Registration"
+            />
+        <activity
             android:name=".MainFragment"
             android:exported="false" />
         <activity
@@ -48,7 +63,7 @@
             android:exported="true"
             android:label="Login"
             android:screenOrientation="portrait"
-            android:theme="@style/fullScreen"></activity>
+            android:theme="@style/fullScreen" />
     </application>
 
 </manifest>

@@ -63,4 +63,20 @@
             android:padding="10dp"
             />
     </LinearLayout>
+    <TextView
+        android:id="@+id/newRegistration"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="New Registration "
+        android:textAlignment="center"
+        android:padding="10dp"
+        />
+    <TextView
+        android:id="@+id/newLogin"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="New Login "
+        android:textAlignment="center"
+        android:padding="10dp"
+        />
 </LinearLayout>

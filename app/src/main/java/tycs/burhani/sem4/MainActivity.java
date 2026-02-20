@@ -24,7 +24,7 @@ import java.util.Locale;
 
 public class MainActivity extends AppCompatActivity {
     EditText _main_et_username,_main_et_password;
-    TextView _main_tv_forgotPassword,_main_tv_newUser;
+    TextView _main_tv_forgotPassword,_main_tv_newUser,_newRegistration,_newLogin;
     Button _main_btn_submit;
     String username,password;
     public static final String myPreference = "myPrefs";
@@ -67,6 +67,8 @@ public class MainActivity extends AppCompatActivity {
         _main_tv_forgotPassword = findViewById(R.id.main_tv_forgotPassword);
         _main_tv_newUser = findViewById(R.id.main_tv_newUser);
         _main_btn_submit = findViewById(R.id.main_btn_login);
+        _newRegistration = findViewById(R.id.newRegistration);
+        _newLogin = findViewById(R.id.newLogin);
 
         if(sharedPreferences.getAll().containsKey("isLogin")){
             if(sharedPreferences.getString("isLogin","").equals("1")){
@@ -79,6 +81,21 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         }
+
+        _newRegistration.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(MainActivity.this,NewRegistration.class);
+                startActivity(i);
+            }
+        });
+        _newLogin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(MainActivity.this,newLogin.class);
+                startActivity(i);
+            }
+        });
 
 //        if(sharedPreferences.getAll().containsKey("language")){
 //            if(sharedPreferences.getString("language", "") != ""){
